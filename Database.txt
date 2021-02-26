@@ -1,0 +1,195 @@
+CREATE DATABASE PHC_DATABASE;
+
+USE PHC_DATABASE;
+
+CREATE TABLE Medical_Data
+(   
+      StudentID INTEGER(7) NOT NULL,
+      SudentName VARCHAR(20),
+      MobileNumber VARCHAR(15),
+      Sex CHAR(1),
+      BloodGroup VARCHAR(4),
+      Remarks VARCHAR(50),
+      PRIMARY KEY (StudentID)
+);
+
+CREATE TABLE PHC_Workers
+(   
+      WorkerID INTEGER(6) NOT NULL,
+      LoginPassword VARCHAR(20),
+      WorkerName VARCHAR(20),
+      MobileNumber VARCHAR(15),
+      EmailId VARCHAR(30),
+      PRIMARY KEY (WorkerID)
+);
+
+CREATE TABLE Doctor
+(   
+      Day CHAR(3) NOT NULL,
+      TimeIn TIME NOT NULL,
+      TimeOut TIME,
+      DoctorID INTEGER(6),
+      PRIMARY KEY (Day,TimeIN,DoctorID),
+      FOREIGN KEY (DoctorID) REFERENCES PHC_Workers(WorkerID)
+);
+
+CREATE TABLE Compounder
+(    
+      Day CHAR(3) NOT NULL,
+      TimeIn TIME NOT NULL,
+      TimeOut TIME,
+      CompounderID INTEGER(6),
+      PRIMARY KEY (Day,TimeIN,CompounderId),
+      FOREIGN KEY (CompounderID) REFERENCES PHC_Workers(WorkerID)
+);
+
+CREATE TABLE Medicine
+(   
+      Name VARCHAR(30) NOT NULL,
+      Description TEXT,
+      Presnt_Qty INTEGER,
+      Req_Qty INTEGER,
+      PRIMARY KEY (Name)
+);
+
+CREATE TABLE Patient_Visit
+(   
+      PatientID INTEGER(7) NOT NULL,
+      Date DATE NOT NULL,
+      Problem VARCHAR(50),
+      TreatmentRecord TEXT,
+      DoctorID  INTEGER(6),
+      Medicine VARCHAR(30),
+      PRIMARY KEY (PatientID,Date),
+      FOREIGN KEY (PatientID) REFERENCES Medical_Data(StudentID),
+      FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
+      FOREIGN KEY (Medicine) REFERENCES Medicine(Name)
+);
+
+INSERT INTO Medical_Data VALUES
+(2019147,"Shrestha","9458221261","M","B+",NULL),
+(2019123,"Apoorva","9008975781","F","B+",NULL),
+(2018299,"Dhruv","9876543210","M","O+","Diabetic"),
+(2019346,"Deepti","7654315781","F","AB+","Soar Throat"),
+(2017123,"Gurpreet","9123475790","M","B+","Myopia"),
+(2016345,"Asha","7896543211","F","O-","Handicaped by one leg"),
+(2017100,"Jyoti","9124421897","F","A+",NULL),
+(2018435,"Karan","9383537783","M","O+","Osteoporosis"),
+(2016234,"Apoorv","9384895838","M","AB-","Ulcer,Hyperopia"),
+(2019001,"Kapil","8976543120","M","B+",NULL),
+(2018231,"Manisha","8712546928","F","AB+","Anemia"),
+(2018157,"Unnati","9014565781","F","B+",NULL),
+(2018329,"Ankur","98719042367","M","O+",NULL),
+(2017146,"Akash","7681123410","M","AB+","Tonsillitis"),
+(2019034,"Ashi","9037892034","F","B+",NULL),
+(2016126,"Komal","7896123768","F","O-","Handicaped by an eye"),
+(2018241,"Nisha","9843282897","F","A+",NULL),
+(2018125,"Rishab","9383123456","M","O+","Hyperopia"),
+(2016274,"Anirudh","7654323450","M","O+","Low blood pressure"),
+(2019111,"Sunil","8876543120","M","B+",NULL),
+(2016041,"Rupal","8728834565","F","AB+","Myopia"),
+(2012345,"Poorva","9123456652","F","B+",NULL),
+(2028838,"Dhriti","7489597483","F","A+",NULL),
+(2015433,"Sanket","7638985541","M","AB+","Gastroenteritis,Hyperopia"),
+(2018133,"Prabhat","9187456790","M","B+",NULL),
+(2023480,"Purvi","9445546457","F","A+",NULL),
+(2018005,"Pranav","9345678765","M","O+","Asthma"),
+(2016165,"Raj","9388478238","M","AB-",NULL),
+(2055581,"Manas","9855469870","M","O+","Diabetic,Myopia"),
+(2068765,"Divya","7654315781","F","AB+",NULL),
+(2012423,"Sandeep","9123909876","M","B+","Hyperopia");
+
+INSERT INTO PHC_Workers VALUES
+(456388,"pan123*@phc","Pankaj","7302386361","pankaj456@iiitdmj.ac.in"),
+(457378,"moh124@#phc","Mohan","7309452261","mohan457@iiitdmj.ac.in"),
+(345878,"sur345^&phc","Suraj","9785746565","suraj345@iiitdmj.ac.in"),
+(294837,"har294^*phc","Harish","9878767564","harish294@iiitdmj.ac.in"),
+(220501,"smr220%^phc","Smriti","7856352763","smriti220@iiitdmj.ac.in"),
+(932723,"tus932$*phc","Tushar","7483729228","tushar932@iiitdmj.ac.in"),
+(328328,"ravi328*$phc","ravi","9473983892","ravi328@iiitdmj.ac.in"),
+(233455,"man233%$phc","Manish","8749287487","manish233@iiitdmj.ac.in"),
+(183284,"son183@#phc","Sonia","9392893929","sonia183@iiitdmj.ac.in");
+
+INSERT INTO Doctor VALUES
+("Mon","08:00:00","10:00:00",233455),
+("Tue","08:00:00","10:00:00",233455),
+("Wed","08:00:00","10:00:00",233455),
+("Thu","08:00:00","10:00:00",233455),
+("Fri","08:00:00","10:00:00",233455),
+("Sun","08:00:00","10:00:00",233455),
+("Mon","16:00:00","18:00:00",183284),
+("Tue","16:00:00","18:00:00",183284),
+("Wed","16:00:00","18:00:00",183284),
+("Thu","16:00:00","18:00:00",183284),
+("Fri","16:00:00","18:00:00",183284),
+("Sat","16:00:00","18:00:00",183284),
+("Mon","12:00:00","14:00:00",220501),
+("Tue","12:00:00","14:00:00",220501),
+("Wed","12:00:00","14:00:00",220501),
+("Thu","12:00:00","14:00:00",220501),
+("Fri","12:00:00","14:00:00",220501);
+
+INSERT INTO Compounder VALUES
+("Mon","06:00:00","14:00:00",456388),
+("Tue","06:00:00","14:00:00",456388),
+("Wed","06:00:00","14:00:00",456388),
+("Thu","06:00:00","14:00:00",456388),
+("Fri","06:00:00","14:00:00",456388),
+("Sat","06:00:00","14:00:00",456388),
+("Mon","06:00:00","14:00:00",457378),
+("Tue","06:00:00","14:00:00",457378),
+("Wed","06:00:00","14:00:00",457378),
+("Thu","06:00:00","14:00:00",457378),
+("Fri","06:00:00","14:00:00",457378),
+("Sun","06:00:00","14:00:00",457378),
+("Mon","14:00:00","22:00:00",345878),
+("Tue","14:00:00","22:00:00",345878),
+("Wed","14:00:00","22:00:00",345878),
+("Thu","14:00:00","22:00:00",345878),
+("Fri","14:00:00","22:00:00",345878),
+("Sat","14:00:00","22:00:00",345878),
+("Mon","14:00:00","22:00:00",294837),
+("Tue","14:00:00","22:00:00",294837),
+("Wed","14:00:00","22:00:00",294837),
+("Thu","14:00:00","22:00:00",294837),
+("Fri","14:00:00","22:00:00",294837),
+("Sun","14:00:00","22:00:00",294837),
+("Mon","22:00:00","06:00:00",932723),
+("Tue","22:00:00","06:00:00",932723),
+("Wed","22:00:00","06:00:00",932723),
+("Thu","22:00:00","06:00:00",932723),
+("Fri","22:00:00","06:00:00",932723),
+("Sat","22:00:00","06:00:00",932723),
+("Mon","22:00:00","06:00:00",328328),
+("Tue","22:00:00","06:00:00",328328),
+("Wed","22:00:00","06:00:00",328328),
+("Thu","22:00:00","06:00:00",328328),
+("Fri","22:00:00","06:00:00",328328),
+("Sun","22:00:00","06:00:00",328328);
+
+INSERT INTO Medicine VALUES
+("Crocin","Cough and Cold",1000,1200),
+("Diazepam","anxiety, muscle spasms, alcohol withdrawal, seizures",240,250),
+("Pentazocine","opioid pain medication",45,50),
+("Promethazine","nausea and vomiting ",35,50),
+("Adrenaline Injection","serious allergic reactions to insect stings/bites, foods, drugs, or other substances",40,50),
+("Paracetamol","painkillers and anti-sickness medicines",850,1000),
+("Doxycycline","acne,urinary tract infections,intestinal infections,respiratory infections,eye infections,and others",440,500),
+("Dextran","hypovolemia,trauma or injury, severe burns, or other causes of bleeding",4,5),
+("Methyldopa Tablets","lowers blood pressure",470,500),
+("Fluconazole Tablets","prevent and treat a variety of fungal and yeast infections",500,500),
+("Salbutamol Tablets","asthma,relieve the narrowing of the airways,chronic bronchitis,emphysema",790,1000),
+("Glucose bottle","fuel body cells",360,500),
+("Bandages"," covering wounds,keep dressings,controlling bleeding,provide support to the body",130,200);
+
+INSERT INTO Patient_Visit VALUES
+(2019147,"19-10-20","Cold","Common cold,Medicine given",456388,"Crocin"),
+(2018299,"19-10-20","Cold","Common cold,Medicine given",457378,"Crocin"),
+(2018435,"19-10-21","fever","viral-fever,Medicine given",220501,"Paracetamol"),
+(2017100,"19-10-22","stomach infection","Simple cold,Medicine given",183284,"Promethazine"),
+(2019147,"19-10-22","Cold","Common cold,Medicine given",233455,"Crocin"),
+(2019111,"19-10-24","fungal infection","fungal infection,Medicine given",233455,"Fluconazole"),
+(2019001,"19-10-24","Sewear Headache","could be a migraine attack,Medicine given",220501,"Paracetamol"),
+(2019147,"19-10-25","Cold","seems to be a viral-bloodtest needed,Medicine given",233455,"Paracetamol"),
+(2017123,"19-10-30","allergy","allergy from cat fur,Ingection given",183284,"Adrenaline Injection"),
+(2017100,"19-11-01","cold","commom cold,Medicine given",220501,"Crocin");
