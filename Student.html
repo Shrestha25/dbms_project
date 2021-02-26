@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+body{
+   
+}
+</style>
+</head>
+<body>
+<div>
+<img src="img/logo.jpeg" width=100%>
+</div>
+<div class="box1">
+<h3>Doctar Availability</h3>
+<form action="doav.php" method="post">
+<table>
+   <tr>
+       <td>Select Day</td>
+       <td><select type="text" name="Day">
+       <option> none
+       <option> Mon
+       <option> Tue
+       <option> Wed
+       <option> Thu
+       <option> Fri
+       <option> Sat
+       <option> Sun
+       </select></td>
+   </tr>
+   <tr>
+      <td>Select by ID</td>
+      <td><input type="number" name="ID"></td>
+   </tr>
+   <tr>
+     <td>Select by Name</td>
+     <td><input type="text" name="Name"></td>
+   </tr>
+</table>
+<br>
+<input type="submit" name="find" value="Find"/>
+</form>
+</div>
+</body>
+</html>

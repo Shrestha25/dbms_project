@@ -1,0 +1,61 @@
+body{
+    background-image:url('../img/bac4.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+table,th,td,tr{
+      margin-left: auto;
+      margin-right: auto;
+      border:2px solid #02105E;
+      border-collapse:collapse;
+      padding:10px;
+      background-color:#2BDAC4;
+      color:#AD2BDA;
+}
+a:link {
+  color: red;
+  text-decoration: none;
+}
+
+a:visited {
+  color: green;
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+a:active {
+  color: blue;
+  text-decoration: none;
+}
+.box1{
+    background-image:url('../img/bac5.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:80%;
+    margin:auto;
+    text-align:center;
+    box-sizing:border-box;
+}
+.box2{
+    width:80%;
+    margin:auto;
+    text-align:center; 
+    box-sizing:border-box;
+}
+.box3{
+    width:50%;
+    float:left;
+    box-sizing:border-box;
+}
+.warning{
+     color:#FD0719;
+     font-style: italic;
+}
+.calm{
+     color:#0725FD;
+     font-style: italic;
+}
